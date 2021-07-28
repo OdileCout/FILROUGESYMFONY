@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits du boutique!{% endblock %}
+
+{% block body %}
+    <main>
+        <section>
+            <!--Le corps de la page-->
+            <h1 class="titleBoutique">BOUTIQUE</h1>
+            <div class="rechercher">
+                <form action="">
+                    <label for="champ">Recherchez un aliment :</label>
+                    <input type="text" id="champ" class="champ">
+                    <input type="button" id="recherche" class="recherche" value="chercher">
+                </form>
+                <div id="afficheCherche">
+                </div>
+            </div>
+            <div class="boutSection3 d-flex flex-wrap">
+            {% for produit in produits %}
+                <div class="card m-3" style="width:20rem;">
+                    <div class="card-body"> 
+                        <div class="boutSection1quatreM">
+                            <div class="imgBoutSection4 im">                                                                                            
+                                <img class="image" src="../img/boutique/{{produit.numeroImage}}.jpg" alt="jus">
+                                <div class="desc">
+                                    <h5 class="card-title">{{produit.nomProduit}}</h5>
+                                    <p class="nomDeProduit">Description : {{produit.description}}</p>
+                                    <p>Qté dispo : {{produit.quantiteDisponibles}}</p>
+                                </div>
+                            </div>
+                            <div class="pBoutSection4">
+                                <form action="" method="post">
+                                    <a href="showPanier.php?id=%d"><input data-toggle="modal" data-target="#staticBackdrop" class="description" type="button" id="description12" name="produitChoisi" value="Jus de corosol" /></a>
+                                </form>
+                                <p>prix : {{produit.prixUnitaire}} €</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endfor %}                                                                                                                                                                      
+            </div>
+        </section>
+    </main>
+{% endblock %}

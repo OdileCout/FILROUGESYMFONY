@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Profil!{% endblock %}
+
+{% block body %}
+    <div class="container mb-5 mt-5">
+        <p>Bonjour : {{ app.user.nom ~' '~ app.user.prenom  }}</p>
+        {% for item in app.user.roles %}
+            <p>Vous êtes : {{ item }}</p>
+        {% endfor %}
+    </div> 
+{% endblock %}

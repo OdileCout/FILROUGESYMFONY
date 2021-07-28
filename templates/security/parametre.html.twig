@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Profil!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 mb-5 pb-5 dddd">
+        <div class="" style="width:50%" >
+            <h3 class="h3 mb-3 font-weight-normal">Supprimer le profil</h3>
+            <p>Voulez-vous supprimer votre profil?</p>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Supprimer</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer le profil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger text-center">Attention !</p>
+                            <p class="text-center">Êtes-vous sûr de vouloir supprimer le profil ?</p>
+                            <p class="text-center">Les données personnelles seront supprimées.
+                            <br/>Les commentaires et autres contenus
+                            rédigés sur le site auront la mention "profil supprimé". Et l'adresse email sera bloquée.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-danger buttonDeleteBtn" data-href="{{ path('delete', {'id': app.user.id })}}">Supprimer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        <div style="width:50%">
+            <h1 class="h3 mb-3 font-weight-normal">Modifier mon profil</h1>
+                {{form_start(formulaire, {'attr':{'novalidate':'novalidate'}})}}
+                <div class="form-group">
+                    {{form_label(formulaire.nom, "Nom : ")}}
+                    {{form_widget(formulaire.nom, {'attr':{'class':'form-control', 'aria-describedby':'emailHelp', 'placeholder':'Votre nom', 'value':app.user.nom}})}}
+                </div>
+                <div class="form-group">
+                    {{form_label(formulaire.prenom, "Prénom : ")}}
+                    {{form_widget(formulaire.prenom, {'attr':{'class':'form-control', 'aria-describedby':'emailHelp', 'placeholder':'Votre prenom', 'value':app.user.prenom}})}}
+                </div>
+                <div class="form-group">
+                    {{form_label(formulaire.password, "Mot de passe : ")}}
+                    {{form_widget(formulaire.password, {'attr':{'class':'form-control', 'type':'password', 'aria-describedby':'emailHelp'}})}}
+                </div>
+                <div class="form-group">
+                    {{form_label(formulaire.phone, "Numéro de téléphone : ")}}
+                    {{form_widget(formulaire.phone, {'attr':{'class':'form-control', 'aria-describedby':'emailHelp', 'placeholder':'06 34 05 67 56', 'value':app.user.phone}})}}
+                </div>
+                <a href="">{{form_widget(formulaire.save, {'attr':{'class':'btn btn-primary float-right', 'type':'submit'}})}}</a>
+                {{form_end(formulaire)}}
+        </div>
+    </div>
+   <script src="{{asset('js/srip.js')}}"></script> 
+{% endblock %}
